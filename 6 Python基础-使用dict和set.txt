@@ -1,0 +1,27 @@
+﻿使用dict和set
+1、dict
+	Python内置字典
+	在其他语言称为map，极快的查找速度
+	key-value存储方式，一个key只能对应一个value；
+	声明：{ }
+
+	判断是否存在key：
+		key in 变量
+	删除key：
+		变量.pop('key')
+2、set
+	与dict唯一区别就是没有存储对应的value
+	创建一个set，需要提供一个list作为集合：
+		s=set([])
+	重复元素在set中会自动被过滤
+		
+	添加元素到set中：
+		s.add(key)
+		可以重复添加，但是没有效果
+	删除元素：
+		remove(key)
+		s.remove(key)
+	两个set可以做数学意义上的并集和交集：
+		s1&&s2
+		s1|s2
+		

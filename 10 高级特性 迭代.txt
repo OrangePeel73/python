@@ -1,0 +1,65 @@
+	迭代
+	
+1、collections模块的iterable类型
+	判断一个对象是否是可迭代对象。
+	
+	>>> from collections import Iterable
+	>>> isinstance('abc', Iterable) # str是否可迭代
+	True
+	>>> isinstance([1,2,3], Iterable) # list是否可迭代
+	True
+	>>> isinstance(123, Iterable) # 整数是否可迭代
+	False
+	
+2、可以通过for循环来遍历list/tuple，这种遍历成为迭代。
+
+3、Python的迭代通过for...in完成的。
+	不仅可以用在list/tuple上，还可以用在其他迭代对象上。
+	
+	list有下标，但是很多其他数据类型没有下标，
+	但是只要是迭代对象，无论有无下标，都可以迭代，如dict，
+	dict的存储不是暗战list方式顺序排列，所以迭代出来的结果顺序很可能不一样。
+
+	
+	
+4、遍历key
+	for key in list
+	
+	
+5、遍历value：
+	for value in list.value()
+	
+6、同时遍历key和value：
+	for k，v in list.items()
+	
+
+
+7、enumerate函数
+	把一个list变成索引-元素对，在for循环中同时迭代索引和元素本身。
+	>>>for i, value in enumerate(['A', 'B', 'C']):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+

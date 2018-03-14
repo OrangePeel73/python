@@ -1,0 +1,181 @@
+	函数的参数
+
+1、位置参数
+	函数定义时的必选参数。
+	
+	def power(x,n):
+		x,n为位置参数；
+		调用函数时，擦混入的两个值按照位置顺序依次赋给参数x，n。
+		当传入参数缺少会报错，必须是传入两个参数。
+
+		
+2、默认参数
+	默认参数必须是指向不可变对象！！！
+	当位置参数传入错误时，默认参数派上用场。
+	
+	
+	
+	例如，power函数用于计算一个数的三次方，
+	当想要计算二次方时又需调用另一个函数相当麻烦，
+	这时可以使用默认参数，就可以一个函数两用，
+		栗子：
+			def power(x,n=2): 默认参数为n=2
+				当n>2时，就必须明确的传入n，power(5,3)//125
+				传入一个参数时：power(5)//25
+		
+		栗子2：
+			def enroll(name, gender, age=6, city='Beijing'):
+				可以只传入两个位置参数，然后使用默认值
+				也可以传入两个位置参数和默认参数，
+				默认参数多个时，可以传入任意个，不传入的默认参数，默认使用默认参数值。
+
+3、可变参数
+	传入的参数可以变，可以任意个，包括0个；
+	定义可变参数：在参数前面加一个*号。
+	
+	可变参数接收的是一个tuple。
+	
+	传入参数时可以任意个，0个
+	
+	def calc(*number):
+		sum=0;
+		for i in number:
+			sum=sum+i;
+		return sum;
+	调用：
+		1》print(calc(1,2,3,4,5));
+	
+		2》当已有list或tuple，调用函数：
+			1》nums=[1,2,3];
+				calc(nums[0],nums[1],nums[2]);
+			2》简化写法
+				calc(*nums);//*nums表示把nums这个list的所有元素作为可变参数传入。
+		
+	
+	
+
+	
+4、关键字参数
+	允许你传入0个或任意个含参数名的参数。
+	可以传入不受限制的关键字参数（与命名关键字参数的区别）
+	def person(name, age, **kw):
+		print('name:', name, 'age:', age, 'other:', kw)
+	函数person除了接收name，age外，还接受关键字函数kw，
+	调用函数时可以只传入必选参数。
+	调用：
+		1》person('Bob', 35, city='Beijing')
+	 
+		2》当组装一个ditc时：
+			extra = {'city': 'Beijing', 'job': 'Engineer'}
+			person('Jack', 24, **extra)
+			//**extra表示把extra这个dict的所有key-value用关键字参数传入到函数的**kw参数，
+			kw将获得一个dict的一份拷贝，kw的改动不会影响到到extra。
+
+
+5、命名关键字参数
+
+	关键字参数可以传入不受限制的关键字参数；
+	命名关键字参数就是限制关键字参数的名字。
+
+	与关键字参数的格式**kw不同，
+	命名关键字参数需要特殊分隔符*，*后面的参数视为命名关键字参数。
+	
+	比如person的关键字参数只接受city好job作为关键字：
+		def person(name, age, *, city, job):
+			print(name, age, city, job)
+		只接受city，job的关键字参数，其他不接受
+		
+	调用：
+		person('Jack', 24, city='Beijing', job='Engineer')
+		Jack 24 Beijing Engineer
+	
+	当参数中已经有了可变参数，后面的命名关键字参数不需要*分隔符；
+		def person(name, age, *args, city, job):
+			print(name, age, args, city, job)
+		
+	没有可变参数时，就必须加*分隔符
+	
+	命名关键字必须传入参数名，否则报错。
+		person('Jack', 24, 'Beijing', 'Engineer')//报错
+		
+	命名关键字参数可以有默认值，调用时可不用传入对应的参数名参数；
+		def person(name, age, *, city='Beijing', job):
+			print(name, age, city, job)
+		person('Jack', 24, job='Engineer')
+		Jack 24 Beijing Engineer
+
+6、参数组合
+	定义函数可以用必选参数、默认参数、可变参数、关键字参数、命名关键字参数，
+	五种参数可以组合使用，
+	顺序是：必选参数--默认参数--可变参数参数--命名关键字参数--关键字参数
+	
+小结:
+	1》默认参数一定是不可变对象，否则，程序运行会有逻辑错误；
+	
+	2》可变参数与关键字参数的定义语法：
+		可变参数：*arg，arg接收的是一个tuple ()；
+		关键字参数：**kw，kw接收的是一个dict {}
+		
+	2》可变参数与关键字参数在调用时的传入参数语法：
+		可变参数：
+			可直接传入cal（1,2,3）；
+			可以先组装list或者tuple，再通过*args传入：cal（*args）；
+，
+		关键字参数：
+			可以直接传入：func（a=1，b=2）
+			可以先组装dict，再通过**dict传入：func（**kw）。
+			
+		*args，**kw是Python的习惯写法，也可以用其它参数，建议使用习惯手法。
+		
+	3》命名关键字参数是为了限制调用者可以传入的参数名，同时可以提供默认值。
+	
+	4》在定义命名关键字参数在没有可变参数时，必须添加*分隔符，否则定义的参数将视为位置参数。
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
